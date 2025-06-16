@@ -28,13 +28,11 @@ ALGOD_TOKEN = ""
 client = algod.AlgodClient(ALGOD_TOKEN, ALGOD_ADDRESS)
 APP_ID = 740032257  # Replace with your actual App ID
 
-db = psycopg2.connect(
-    dbname="Database",
-    user="postgres",
-    password="kikixoxo",
-    host="localhost",
-    port="5433"
-)
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+db = psycopg2.connect(os.getenv("DATABASE_PUBLIC_URL"))
 db.autocommit = True
 
 class TransactionData(BaseModel):
