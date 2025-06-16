@@ -14,14 +14,8 @@ print("✅ Python version:", sys.version)
 
 created_at = datetime.now(timezone.utc)
 
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+from fastapi import APIRouter
+router = APIRouter()
 
 ALGOD_ADDRESS = "https://testnet-api.algonode.cloud"
 ALGOD_TOKEN = ""
@@ -45,7 +39,7 @@ class TransactionData(BaseModel):
     end_user: str
     end_user_wallet: str
 
-@app.post("/api/create-transaction")
+@router.post("/api/create-transaction")
 async def create_transaction(data: TransactionData):
     try:
         private_key = mnemonic.to_private_key(data.mnemonic)

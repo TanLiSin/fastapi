@@ -10,16 +10,8 @@ import base64
 import traceback
 
 # Initialize FastAPI
-app = FastAPI()
-
-# CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+from fastapi import APIRouter
+router = APIRouter()
 
 # Algorand settings
 ALGOD_ADDRESS = "https://testnet-api.algonode.cloud"
@@ -46,7 +38,7 @@ class FreshnessData(BaseModel):
     metals: int
     bacteria: int
 
-@app.post("/api/verify-freshness")
+@router.post("/api/verify-freshness")
 async def verify_freshness(data: FreshnessData):
     try:
         # Convert mnemonic to private key and address
