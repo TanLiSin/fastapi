@@ -32,7 +32,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 
-db = psycopg2.connect(os.getenv("DATABASE_URL"))
+db = psycopg2.connect(os.getenv("DATABASE_PUBLIC_URL"))
 db.autocommit = True
 
 class TransactionData(BaseModel):
