@@ -17,7 +17,7 @@ router = APIRouter()
 ALGOD_ADDRESS = "https://testnet-api.algonode.cloud"
 ALGOD_TOKEN = ""
 client = algod.AlgodClient(ALGOD_TOKEN, ALGOD_ADDRESS)
-APP_ID = 741100136  # Replace with your actual App ID
+APP_ID = 741817236  # Replace with your actual App ID
 
 # Connect to Postgres
 from dotenv import load_dotenv
