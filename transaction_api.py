@@ -18,7 +18,7 @@ router = APIRouter()
 ALGOD_ADDRESS = "https://testnet-api.algonode.cloud"
 ALGOD_TOKEN = ""
 client = algod.AlgodClient(ALGOD_TOKEN, ALGOD_ADDRESS)
-APP_ID = 740032257  # Replace with your actual App ID
+APP_ID = 742505328  # Replace with your actual App ID
 
 from dotenv import load_dotenv
 load_dotenv()
