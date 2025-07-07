@@ -12,8 +12,6 @@ import sys
 
 print("✅ Python version:", sys.version)
 
-created_at = datetime.now(timezone.utc)
-
 from fastapi import APIRouter
 router = APIRouter()
 
@@ -42,6 +40,7 @@ class TransactionData(BaseModel):
 @router.post("/api/create-transaction")
 async def create_transaction(data: TransactionData):
     try:
+        created_at = datetime.now(timezone.utc)
         private_key = mnemonic.to_private_key(data.mnemonic)
         from_address = account.address_from_private_key(private_key)
 
